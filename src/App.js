@@ -1,5 +1,6 @@
-import { useReducer } from "react"
-import "./styles.css"
+
+import "./styles.css";
+import { useReducer } from "react";
 
 const ACTIONS = {
   ADD_DIGIT: 'add-digit',
@@ -10,7 +11,13 @@ const ACTIONS = {
 }
 
 function reducer(state, { type, payload }) {
-
+  switch(type) {
+    case ACTIONS.ADD_DIGIT:
+    return {
+      ...state,
+      currentOperand: `${currentOperand}|| ""${payload.digit}`
+  }
+}
 function App() {
   const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(reducer,
   {})
@@ -39,5 +46,6 @@ function App() {
       <button>0</button>
       <button className="span-two">=</button>         
     </div>
-  )
+    )
+  }
 }
